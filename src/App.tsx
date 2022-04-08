@@ -40,7 +40,7 @@ function App() {
         <div className="flex flex-col">
           { viewModel.items.map(item =>
             <div className="grid grid-cols-[auto_1fr] rounded shadow p-4 border border-gray-100 items-center gap-x-4" key={item.id}>
-              <img className="row-span-2 border border-gray-200 w-20 rounded-full" src={item.image} />
+              <img className="row-span-2 border border-gray-200 w-16 rounded-full" src={item.image} />
               <span className="text-2xl text-gray-700">{item.label}</span>
               <a className="text-gray-500 text-lg" href={item.homePage} target="_blank">{item.id}</a>
             </div>
