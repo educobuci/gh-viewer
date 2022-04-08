@@ -19,6 +19,6 @@ export interface SearchView {
 
 export interface SearchResultViewModel {
   total: number
-  items: Array<{ id: number, label: string, image: string, homePage: string }>
+  items: Array<{ id: string, label: string, image: string, homePage: string }>
   error?: { title: string, body: string }
 }

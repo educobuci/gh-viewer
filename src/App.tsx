@@ -27,8 +27,8 @@ function App() {
   }
 
   return (
-    <div className="flex w-full h-screen flex-col justify-center items-center">
-      <form className="flex w-full max-w-md gap-2" onSubmit={handleSubmit}>
+    <div className="flex w-full max-w-md h-screen flex-col justify-center m-auto gap-4">
+      <form className="flex w-full gap-2" onSubmit={handleSubmit}>
         <input className="rounded w-full" type="text" placeholder="Search user name" value={term} onChange={handleTermChange} />
         <button
           type="submit"
@@ -37,26 +37,24 @@ function App() {
           Search
         </button>
       </form>
-      <div>
-        { viewModel.error && 
-          <div>
-            <h3>{viewModel.error.title}</h3>
-            <p>{viewModel.error.body}</p>
-          </div>
-        }
-        { viewModel.total > 0 &&
-          <div>
-            <span>Total: {viewModel.total}</span>
-            { viewModel.items.map(item =>
-              <div key={item.id}>
-                <img src={item.image} />
-                <span>{item.label}</span>
-                <a href={item.homePage}>Home Page</a>
-              </div>
-            ) }
-          </div>
-        }
-      </div>
+      { viewModel.error && 
+        <div className="bg-red-50 w-full p-4 rounded text-center">
+          <h3 className="text-red-800 font-medium">{viewModel.error.title}</h3>
+          <p className="text-red-700">{viewModel.error.body}</p>
+        </div>
+      }
+      { viewModel.total > 0 &&
+        <div className="flex flex-col">
+          { viewModel.items.map(item =>
+            <div className="grid grid-cols-[auto_1fr] rounded shadow p-4 border border-gray-100 items-center gap-x-4" key={item.id}>
+              <img className="row-span-2 border border-gray-200 w-20 rounded-full" src={item.image} />
+              <span className="text-2xl text-gray-700">{item.label}</span>
+              <a className="text-gray-500 text-lg" href={item.homePage} target="_blank">{item.id}</a>
+            </div>
+          ) }
+          <span className="text-sm mt-4 text-gray-500">Results: {viewModel.total}</span>
+        </div>
+      }
     </div>
   )
 }

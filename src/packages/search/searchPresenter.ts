@@ -11,9 +11,9 @@ export default class SearchPresenter implements SearchPresenterInterface {
   present(users: User[]): void {
     this.view.showResult({
       items: users.map(user => ({
-        id: user.id,
+        id: `@${user.login}`,
         image: user.avatarUrl,
-        label: `${user.id}: ${user.login}`,
+        label: `${user.name}`,
         homePage: user.url })),
       total: 1
     })

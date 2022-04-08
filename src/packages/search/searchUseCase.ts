@@ -18,7 +18,7 @@ export default class SearchUseCase implements SearchUseCaseInterface {
         this.presenter.presentError('Please enter a user name.')
       }
     } catch (e: any) {
-      this.presenter.presentError(e.message)
+      this.presenter.presentError(e)
     }
   }
 }
